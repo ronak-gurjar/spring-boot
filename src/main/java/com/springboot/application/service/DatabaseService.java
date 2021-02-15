@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class DatabaseService {
+
     @Autowired
     CourseRepo courseRepo;
 
@@ -21,8 +21,8 @@ public class DatabaseService {
         return coursesList;
     }
 
-    // get specific corse
-    public Optional<Courses> getSpecificCourse(int id) {
+    // get specific courses
+    public Courses getSpecificCourse(int id) {
         return courseRepo.findById(id);
 
     }
@@ -33,9 +33,13 @@ public class DatabaseService {
     }
 
     // update course in list
-    public void updateCourse(int id, Courses course) {
+    public void updateCourse(Courses course) {
         courseRepo.save(course);
     }
 
+    public void deleteCourse(int id) {
+        courseRepo.deleteById(id);
+
+    }
 }
 

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class DatabaseController {
@@ -24,7 +23,7 @@ public class DatabaseController {
     }
 
     @GetMapping("/courses/{id}")
-    public Optional<Courses> getSpecificCourses(@PathVariable int id) {
+    public Courses getSpecificCourses(@PathVariable int id) {
         return courseService.getSpecificCourse(id);
     }
 
@@ -33,9 +32,14 @@ public class DatabaseController {
         courseService.addCourses(courses);
     }
 
-    @PutMapping("/courses/{id}")
-    public void updateCourses(@PathVariable int id, @RequestBody Courses course) {
-        courseService.updateCourse(id, course);
+    @PutMapping("/courses")
+    public void updateCourses(@RequestBody Courses course) {
+        courseService.updateCourse(course);
     }
 
+    @DeleteMapping("/courses/{id}")
+    public void deleteCourses(@PathVariable int id) {
+        courseService.deleteCourse(id);
+
+    }
 }

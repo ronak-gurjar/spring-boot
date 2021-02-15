@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.awt.print.Book;
 
 public interface CourseRepo extends CrudRepository<Courses, Integer> {
-
+public Courses findById(int id);
 }

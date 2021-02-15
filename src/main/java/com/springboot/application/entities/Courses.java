@@ -4,18 +4,19 @@ import org.springframework.data.relational.core.mapping.Column;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "course")
 public class Courses {
+    public Courses() {
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column("id")
     private int id;
     @Column("title")
-
     private String title;
     @Column("description")
-
     private String description;
 
     public Courses(int id, String title, String description) {

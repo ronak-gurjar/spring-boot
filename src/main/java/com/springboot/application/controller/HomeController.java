@@ -1,4 +1,5 @@
 package com.springboot.application.controller;
+
 import com.springboot.application.service.CourseService;
 import com.springboot.application.entities.Courses;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,29 +17,29 @@ public class HomeController {
         return "Hello World";
     }
 
-   /* @GetMapping("/courses")
+    @GetMapping("/book")
     public List<Courses> getCourses() {
         return courseService.getCoursesList();
     }
 
-    @GetMapping("/courses/{id}")
+    @GetMapping("/book/{id}")
     public Courses getSpecificCourses(@PathVariable int id) {
         return courseService.getSpecificCourse(id);
     }
 
-    @PostMapping("/courses")
+    @PostMapping("/book")
     public void addCourses(@RequestBody Courses courses) {
         courseService.addCourses(courses);
     }
 
-    @PutMapping("/courses/{id}")
+    @PutMapping("/book/{id}")
     public void updateCourses(@PathVariable int id, @RequestBody Courses course) {
         courseService.updateCourse(id, course);
     }
 
-    @DeleteMapping("/courses/{id}")
+    @DeleteMapping("/book/{id}")
     public void deleteCourses(@PathVariable int id) {
         courseService.deleteCourse(id);
-    }*/
+    }
 
 }
