@@ -4,13 +4,15 @@ import org.springframework.data.relational.core.mapping.Column;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "course")
 public class Courses {
+
     public Courses() {
+
     }
 
+    // @ID = primary key => unique id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column("id")
@@ -49,4 +51,5 @@ public class Courses {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

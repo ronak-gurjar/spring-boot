@@ -5,7 +5,6 @@ import com.springboot.application.entities.Courses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,20 +15,17 @@ public class DatabaseService {
 
     // get all course list
     public List<Courses> getCoursesList() {
-        List<Courses> coursesList = new ArrayList<>();
-        courseRepo.findAll().forEach(coursesList::add);
-        return coursesList;
+        return (List<Courses>) courseRepo.findAll();
     }
 
     // get specific courses
     public Courses getSpecificCourse(int id) {
         return courseRepo.findById(id);
-
     }
 
     // add course in list
-    public void addCourses(Courses courses) {
-        courseRepo.save(courses);
+    public void addCourses(List<Courses> courses) {
+        courseRepo.saveAll(courses);
     }
 
     // update course in list
@@ -37,9 +33,14 @@ public class DatabaseService {
         courseRepo.save(course);
     }
 
+    // delete one course
     public void deleteCourse(int id) {
         courseRepo.deleteById(id);
+    }
 
+    // delete all courses
+    public void deleteAllCourses() {
+        courseRepo.deleteAll();
     }
 }
 

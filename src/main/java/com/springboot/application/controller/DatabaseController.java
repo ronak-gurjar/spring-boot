@@ -28,7 +28,7 @@ public class DatabaseController {
     }
 
     @PostMapping("/courses")
-    public void addCourses(@RequestBody Courses courses) {
+    public void addCourses(@RequestBody List<Courses> courses) {
         courseService.addCourses(courses);
     }
 
@@ -40,6 +40,10 @@ public class DatabaseController {
     @DeleteMapping("/courses/{id}")
     public void deleteCourses(@PathVariable int id) {
         courseService.deleteCourse(id);
+    }
 
+    @DeleteMapping("/courses")
+    public void deleteAllCourses() {
+        courseService.deleteAllCourses();
     }
 }
