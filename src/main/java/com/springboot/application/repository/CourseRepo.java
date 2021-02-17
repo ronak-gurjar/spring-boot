@@ -1,8 +1,20 @@
 package com.springboot.application.repository;
 
 import com.springboot.application.entities.Courses;
-import org.springframework.data.repository.CrudRepository;
 
-public interface CourseRepo extends CrudRepository<Courses, Integer> {
-    Courses findById(int id);
+import java.util.List;
+
+public interface CourseRepo {
+    List<Courses> getCoursesList();
+
+    Courses getSpecificCourse(int id);
+
+    void addCourses(List<Courses> courses);
+
+    void updateCourse(Courses course);
+
+    void deleteCourse(int id);
+
+    void deleteAllCourses();
+
 }

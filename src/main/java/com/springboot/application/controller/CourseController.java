@@ -1,6 +1,6 @@
 package com.springboot.application.controller;
 
-import com.springboot.application.service.DatabaseService;
+import com.springboot.application.repository.CourseRepo;
 import com.springboot.application.entities.Courses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class DatabaseController {
+public class CourseController {
+
     @Autowired
-    DatabaseService courseService;
+    CourseRepo databaseRepo;
 
     @GetMapping("/test")
     public String sayHello() {
@@ -19,31 +20,31 @@ public class DatabaseController {
 
     @GetMapping("/courses")
     public List<Courses> getCourses() {
-        return courseService.getCoursesList();
+        return databaseRepo.getCoursesList();
     }
 
     @GetMapping("/courses/{id}")
     public Courses getSpecificCourses(@PathVariable int id) {
-        return courseService.getSpecificCourse(id);
+        return databaseRepo.getSpecificCourse(id);
     }
 
     @PostMapping("/courses")
     public void addCourses(@RequestBody List<Courses> courses) {
-        courseService.addCourses(courses);
+        databaseRepo.addCourses(courses);
     }
 
     @PutMapping("/courses")
     public void updateCourses(@RequestBody Courses course) {
-        courseService.updateCourse(course);
+        databaseRepo.updateCourse(course);
     }
 
     @DeleteMapping("/courses/{id}")
     public void deleteCourses(@PathVariable int id) {
-        courseService.deleteCourse(id);
+        databaseRepo.deleteCourse(id);
     }
 
     @DeleteMapping("/courses")
     public void deleteAllCourses() {
-        courseService.deleteAllCourses();
+        databaseRepo.deleteAllCourses();
     }
 }
