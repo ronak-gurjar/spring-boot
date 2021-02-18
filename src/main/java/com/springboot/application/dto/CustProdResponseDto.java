@@ -3,10 +3,20 @@ package com.springboot.application.dto;
 public class CustProdResponseDto {
     private String proName;
     private String name;
+    private String city;
 
-    public CustProdResponseDto(String proName, String name) {
+    public CustProdResponseDto(String name, String proName, String city) {
         this.proName = proName;
         this.name = name;
+        this.city = city;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getProName() {

@@ -15,10 +15,25 @@ public class Customer {
     @Column(name = "city")
     private String city;
 
-    // one customer has one of products
-    @OneToOne(targetEntity = Product.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id", referencedColumnName = "proId")
-    private Product product;
+    // one customer has one products
+   /* @OneToOne(targetEntity = Product.class, cascade = CascadeType.ALL)
+    private Product product;*/
+
+    // one customer has many products
+    /*@OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "foreign_key", referencedColumnName = "id")
+    private List<Product> product;*/
+
+    @ManyToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
+    private List<Product> product;
+
+    public List<Product> getProduct() {
+        return product;
+    }
+
+    public void setProduct(List<Product> product) {
+        this.product = product;
+    }
 
     public int getId() {
         return id;
@@ -44,11 +59,4 @@ public class Customer {
         this.city = city;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 }

@@ -1,16 +1,18 @@
 package com.springboot.application.dto;
 
 import com.springboot.application.entities.Customer;
-import com.springboot.application.entities.Product;
+
+import java.util.List;
 
 public class CustProdRequestDto {
-    private Customer customer;
+    private List<Customer> customer;
 
-    public Customer getCustomer() {
+    public List<Customer> getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(List<Customer> customer) {
         this.customer = customer;
+
     }
 }

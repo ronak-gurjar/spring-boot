@@ -3,14 +3,11 @@ package com.springboot.application.controller;
 import com.springboot.application.dto.CustProdRequestDto;
 import com.springboot.application.dto.CustProdResponseDto;
 import com.springboot.application.entities.Customer;
-import com.springboot.application.repository.CustomerRepo;
-import com.springboot.application.repository.ProductRepo;
+import com.springboot.application.repository.CustomerCrudRepo;
+import com.springboot.application.repository.ProductCrudRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,22 +15,32 @@ import java.util.List;
 public class CustProdController {
 
     @Autowired
-    private CustomerRepo customerRepo;
+    private CustomerCrudRepo customerCrudRepo;
     @Autowired
-    private ProductRepo productRepo;
+    private ProductCrudRepo productCrudRepo;
 
     @PostMapping("/placeOrder")
-    public Customer PlaceOrder(@RequestBody CustProdRequestDto custProdRequestDto) {
-        return customerRepo.save(custProdRequestDto.getCustomer());
+    public List<Customer> PlaceOrder(@RequestBody CustProdRequestDto custProdRequestDto) {
+        return (List<Customer>) customerCrudRepo.saveAll(custProdRequestDto.getCustomer());
     }
 
     @GetMapping("/getList")
     public List<Customer> CustomerList() {
-        return (List<Customer>) customerRepo.findAll();
+        return (List<Customer>) customerCrudRepo.findAll();
     }
 
     @GetMapping("/getInfo")
     public List<CustProdResponseDto> getInfo() {
-        return customerRepo.joinInfo();
+        return customerCrudRepo.joinInfo();
     }
+
+    @DeleteMapping("/deleteInfo/{id}")
+    public void deleteInfo(@PathVariable int id) {
+        customerCrudRepo.deleteById(id);
+    }
+/*
+    @GetMapping("/getInfo")
+    public List<Object> getInfo() {
+        return customerCrudRepo.joinInfo();
+    }*/
 }
