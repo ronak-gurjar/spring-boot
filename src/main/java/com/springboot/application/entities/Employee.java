@@ -1,13 +1,15 @@
 package com.springboot.application.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "employee")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="e_id")
+    private int eId;
     @Column(name = "first_Name")
     private String firstName;
     @Column(name = "last_Name")
@@ -15,23 +17,23 @@ public class Employee {
     @Column(name = "age")
     private int age;
 
-    @OneToOne(targetEntity = EmployeeContact.class,cascade = CascadeType.ALL)
-    private EmployeeContact employeeContact;
+    @OneToMany( cascade = CascadeType.ALL)
+    private List<EmployeeContact> employeeContact;
 
-    public EmployeeContact getEmployeeContact() {
+    public List<EmployeeContact> getEmployeeContact() {
         return employeeContact;
     }
 
-    public void setEmployeeContact(EmployeeContact employeeContact) {
+    public void setEmployeeContact(List<EmployeeContact> employeeContact) {
         this.employeeContact = employeeContact;
     }
 
-    public int getId() {
-        return id;
+    public int geteId() {
+        return eId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void seteId(int eId) {
+        this.eId = eId;
     }
 
     public String getFirstName() {
@@ -57,6 +59,5 @@ public class Employee {
     public void setAge(int age) {
         this.age = age;
     }
-
 
 }

@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "emp_contact")
 public class EmployeeContact {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(name = "number")
     private long number;
@@ -36,6 +36,5 @@ public class EmployeeContact {
     public void setType(String type) {
         this.type = type;
     }
-
 
 }
