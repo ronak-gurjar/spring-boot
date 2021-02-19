@@ -38,6 +38,7 @@ public class CustProdController {
     public void deleteInfo(@PathVariable int id) {
         customerCrudRepo.deleteById(id);
     }
+
 /*
     @GetMapping("/getInfo")
     public List<Object> getInfo() {

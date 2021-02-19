@@ -9,16 +9,13 @@ public class EmployeeContact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "number")
-    public long number;
+    private long number;
     @Column(name = "type")
     private String type;
 
     public int getId() {
         return id;
     }
-
-    @OneToOne(targetEntity = Employee.class, cascade = CascadeType.ALL)
-    private Employee employee;
 
     public void setId(int id) {
         this.id = id;
@@ -40,11 +37,5 @@ public class EmployeeContact {
         this.type = type;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
 }

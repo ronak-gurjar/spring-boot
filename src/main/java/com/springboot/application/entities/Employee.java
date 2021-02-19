@@ -14,7 +14,17 @@ public class Employee {
     private String lastName;
     @Column(name = "age")
     private int age;
+
+    @OneToOne(targetEntity = EmployeeContact.class,cascade = CascadeType.ALL)
     private EmployeeContact employeeContact;
+
+    public EmployeeContact getEmployeeContact() {
+        return employeeContact;
+    }
+
+    public void setEmployeeContact(EmployeeContact employeeContact) {
+        this.employeeContact = employeeContact;
+    }
 
     public int getId() {
         return id;
@@ -48,11 +58,5 @@ public class Employee {
         this.age = age;
     }
 
-    public EmployeeContact getEmployeeContact() {
-        return employeeContact;
-    }
 
-    public void setEmployeeContact(EmployeeContact employeeContact) {
-        this.employeeContact = employeeContact;
-    }
 }
