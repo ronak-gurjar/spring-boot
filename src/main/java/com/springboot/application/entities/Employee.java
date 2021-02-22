@@ -7,9 +7,9 @@ import java.util.List;
 @Table(name = "employee")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="e_id")
-    private int eId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "emp_id")
+    private int id;
     @Column(name = "first_Name")
     private String firstName;
     @Column(name = "last_Name")
@@ -17,23 +17,16 @@ public class Employee {
     @Column(name = "age")
     private int age;
 
-    @OneToMany( cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "foreign_key", referencedColumnName = "emp_id")
     private List<EmployeeContact> employeeContact;
 
-    public List<EmployeeContact> getEmployeeContact() {
-        return employeeContact;
+    public int getId() {
+        return id;
     }
 
-    public void setEmployeeContact(List<EmployeeContact> employeeContact) {
-        this.employeeContact = employeeContact;
-    }
-
-    public int geteId() {
-        return eId;
-    }
-
-    public void seteId(int eId) {
-        this.eId = eId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -60,4 +53,11 @@ public class Employee {
         this.age = age;
     }
 
+    public List<EmployeeContact> getEmployeeContact() {
+        return employeeContact;
+    }
+
+    public void setEmployeeContact(List<EmployeeContact> employeeContact) {
+        this.employeeContact = employeeContact;
+    }
 }
