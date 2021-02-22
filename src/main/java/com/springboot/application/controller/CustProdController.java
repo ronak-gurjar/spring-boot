@@ -4,7 +4,6 @@ import com.springboot.application.dto.CustProdRequestDto;
 import com.springboot.application.dto.CustProdResponseDto;
 import com.springboot.application.entities.Customer;
 import com.springboot.application.repository.CustomerCrudRepo;
-import com.springboot.application.repository.ProductCrudRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +15,6 @@ public class CustProdController {
 
     @Autowired
     private CustomerCrudRepo customerCrudRepo;
-    @Autowired
-    private ProductCrudRepo productCrudRepo;
 
     @PostMapping("/placeOrder")
     public List<Customer> PlaceOrder(@RequestBody CustProdRequestDto custProdRequestDto) {
@@ -39,9 +36,4 @@ public class CustProdController {
         customerCrudRepo.deleteById(id);
     }
 
-/*
-    @GetMapping("/getInfo")
-    public List<Object> getInfo() {
-        return customerCrudRepo.joinInfo();
-    }*/
 }
