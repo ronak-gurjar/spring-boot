@@ -8,30 +8,20 @@ import java.util.List;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
     @Column(name = "name")
     private String name;
     @Column(name = "city")
     private String city;
 
-    // one customer has one products
-   /* @OneToOne(targetEntity = Product.class, cascade = CascadeType.ALL)
-    private Product product;*/
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private Product product;
 
-    // one customer has many products
-    /*@OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "foreign_key", referencedColumnName = "id")
-    private List<Product> product;*/
-
-    @ManyToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
-    private List<Product> product;
-
-    public List<Product> getProduct() {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct(List<Product> product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 
