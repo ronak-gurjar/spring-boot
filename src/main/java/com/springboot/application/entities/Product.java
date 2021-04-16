@@ -7,7 +7,6 @@ import java.util.List;
 @Table(name = "product")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "proId")
     private int proId;
 
@@ -16,16 +15,6 @@ public class Product {
 
     @Column(name = "proQuantity")
     private int proQuantity;
-
-    @OneToOne(mappedBy = "product")
-    private Customer customer;
-
-    public Customer getCustomer() {
-        return customer;
-    }
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 
     public int getProId() {
         return proId;

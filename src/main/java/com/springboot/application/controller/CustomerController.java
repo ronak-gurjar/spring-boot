@@ -3,33 +3,38 @@ package com.springboot.application.controller;
 
 import com.springboot.application.dto.CustProdResponseDto;
 import com.springboot.application.entities.Customer;
-import com.springboot.application.repository.CustomerCrudRepo;
 import com.springboot.application.repository.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-public class CustProdController {
+public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
 
     @PostMapping("/placeOrder")
     public List<Customer> PlaceOrder(@RequestBody List<Customer> customer) {
-       return customerService.PlaceOrder(customer);
+        return customerService.PlaceOrder(customer);
     }
 
-    @GetMapping("/getInfo")
+    @GetMapping("getCustomer/{id}")
+    public Optional<Customer> getCustomer(@PathVariable int id) {
+        return customerService.getCustomer(id);
+    }
+
+    @GetMapping("/getJoinInfo")
     public List<CustProdResponseDto> getInfo() {
-      return   customerService.getInfo();
+        return customerService.getInfo();
     }
 
-    @DeleteMapping("/deleteInfo/{id}")
+    @DeleteMapping("/deleteCustomer/{id}")
     public void deleteInfo(@PathVariable int id) {
-        customerService.deleteInfo(id);
+        customerService.delete(id);
     }
 
 }

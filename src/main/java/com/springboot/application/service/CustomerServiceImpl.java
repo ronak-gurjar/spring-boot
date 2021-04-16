@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -22,12 +23,17 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Optional<Customer> getCustomer(int id) {
+        return customerCrudRepo.findById(id);
+    }
+
+    @Override
     public List<CustProdResponseDto> getInfo() {
         return customerCrudRepo.joinInfo();
     }
 
     @Override
-    public void deleteInfo(int id) {
+    public void delete(int id) {
         customerCrudRepo.deleteById(id);
     }
 }
