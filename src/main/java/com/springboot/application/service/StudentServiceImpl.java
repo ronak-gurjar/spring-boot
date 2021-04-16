@@ -17,7 +17,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student addStudent(Student student) {
-     return studentCrudRepo.save(student);
+        return studentCrudRepo.save(student);
 
     }
 
@@ -28,9 +28,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Optional<Student> getStudent(int id) {
-        Student student= new Student();
-        student.setStudentMarks(student.getStudentMarks());
-   return studentCrudRepo.findById(id);
+        return studentCrudRepo.findById(id);
     }
 
     @Override
